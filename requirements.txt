@@ -1,0 +1,14 @@
+fastapi 
+uvicorn 
+pydantic 
+openai 
+psycopg2-binary 
+sqlalchemy 
+pdfminer.six
+pymupdf
+sqlalchemy 
+psycopg2-binary 
+alembic
+dotenv
+python-multipart
+groq
