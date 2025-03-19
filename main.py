@@ -21,8 +21,8 @@ def get_db():
 
 @app.post("/upload_resume/")
 async def upload_resume(file: UploadFile = File(...), db: Session = Depends(get_db)):
-    file_path = f"uploads/{file.filename}"
-    with open(file_path, "wb") as buffer:
+    file_path = file.filename
+    with open(file.filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     
     resume_text = extract_text_from_pdf(file_path)
@@ -30,5 +30,7 @@ async def upload_resume(file: UploadFile = File(...), db: Session = Depends(get_
 
     new_resume = Resume(filename=file.filename, original_text=resume_text, enhanced_text=enhanced_resume)
     db.add(new_resume)
+    db.commit()
+    db.refresh(new_resume)
 
-    return {"original": resume_text, "enhanced": enhanced_resume}
+    return {"id": new_resume.id ,"original": resume_text, "enhanced": enhanced_resume}
