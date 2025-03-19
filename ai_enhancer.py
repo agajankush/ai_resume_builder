@@ -21,10 +21,13 @@ def enhance_resume_groq(resume_text):
     )
     model="llama-3.2-90b-vision-preview"
     messages = [
-        {
-            "role":"system",
+        {   "role":"system",
+            "content": "You are an expert resume writer."
+        },
+        {   "role":"user",
             "content": prompt
-        }]
+        }
+            ]
     response = client.chat.completions.create(
         model=model,
         messages=messages,
