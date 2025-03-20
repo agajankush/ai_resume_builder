@@ -3,9 +3,13 @@
 ## 🚀 Project Overview
 The **AI-Powered Resume Builder** is a full-stack application that allows users to:
 ✅ Upload resumes (PDF/DOCX)
+
 ✅ Extract text using FastAPI & Python
+
 ✅ Enhance resume content using OpenAI GPT API
+
 ✅ Download AI-enhanced resumes as PDF -ToDo
+
 ✅ Built with **React (Frontend), FastAPI (Backend), PostgreSQL (Database)**
 
 ---
