@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import api from "../api";
+import EnhanceResume from "./EnhanceResume";
 
-const UploadResume = ({ setResumeId }) => {
+const UploadResume = () => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(null);
+  const [resumeId, setResumeId] = useState(null);
 
   const handleUpload = async () => {
     if (!file) {
       toast.error("Please select a file!");
       return;
     }
-    console.log(file);
     const formData = new FormData();
     formData.append("file", file);
 
@@ -32,6 +33,7 @@ const UploadResume = ({ setResumeId }) => {
       <button onClick={handleUpload}>
         {loading ? "Uploading..." : "Upload Resume"}
       </button>
+      {resumeId && <EnhanceResume resumeId={resumeId} uploadedFile={file} />}
     </>
   );
 };
